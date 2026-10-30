@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Seasonal Home Maintenance Tracker</title><style>
+:root{font-family:system-ui,Arial,sans-serif;color:#eaf2fa;background:#0e1725}
+*{box-sizing:border-box}body{margin:0;padding:24px;min-height:100vh}
+main{max-width:680px;margin:0 auto;background:#1c293b;border:1px solid #34445c;border-radius:16px;padding:28px;box-shadow:0 10px 32px #0005}
+h1{font-size:1.8rem;margin:0 0 8px}p{color:#b9c8da;line-height:1.5}label{display:block;margin:16px 0 6px;font-weight:600}
+input[type=number]{width:100%;padding:12px;border-radius:8px;border:1px solid #60728b;background:#0e1725;color:#fff}
+.check{display:flex;align-items:center;gap:12px;padding:11px;background:#25364a;margin:8px 0;border-radius:8px}
+.check input{width:20px;height:20px}button{margin-top:15px;padding:12px;border:0;border-radius:8px;background:#3fbca6;color:#0c1720;font-weight:700;cursor:pointer}
+.output{padding:18px;background:#132c32;border:1px solid #327e76;border-radius:8px;margin-top:18px;font-size:1.2rem}
+small{color:#a8b8c9}footer{margin-top:24px;font-size:.8rem;color:#9eb0c5}
+</style></head><body><main><h1>Seasonal Home Maintenance Tracker</h1><p>A simple offline checklist that adapts to local weather patterns and seasonal changes without internet access</p><p>Check tasks as you finish them. Progress stays in this page until it is closed.</p><label class="check"><input type="checkbox"> Check for frost damage on exterior windows</label><label class="check"><input type="checkbox"> Verify proper drainage around foundation</label><label class="check"><input type="checkbox"> Test heating system for cold weather readiness</label><label class="check"><input type="checkbox"> Inspect roof for winter buildup</label><label class="check"><input type="checkbox"> Ensure gutters are clear of debris</label><label class="check"><input type="checkbox"> Check electrical outlets for ice damage</label><label class="check"><input type="checkbox"> Trim shrubs near foundation for drainage</label><label class="check"><input type="checkbox"> Inspect insulation for moisture damage</label><label class="check"><input type="checkbox"> Test water heater for freezing conditions</label><div class="output" id="result" aria-live="polite">0 completed</div><button id="print" type="button">Print checklist</button><footer>Local, offline prototype. Estimates are illustrative; verify before relying on results. No tracking or external services.</footer></main><script>const boxes=[...document.querySelectorAll('input[type=checkbox]')];
+function update(){let done=boxes.filter(x=>x.checked).length;document.getElementById('result').textContent=done+' of '+boxes.length+' tasks completed';}
+boxes.forEach(x=>x.addEventListener('change',update));document.getElementById('print').addEventListener('click',()=>window.print());update();</script></body></html>
